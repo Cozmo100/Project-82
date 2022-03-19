@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <script src="main.js"></script>
+        <title>Project  82</title>
+        <style>
+            #mc {
+              border: 10px solid rgb(190, 161, 122);
+              background-color: rgb(149, 149, 101);
+              color: white;
+            }
+
+            h1 {
+                color:  white;
+                font-size: 50px;
+            }
+
+            body {
+                background-image: url("https://as1.ftcdn.net/v2/jpg/03/55/98/92/500_F_355989213_e0RfOch2ragaQdu27NjpvovzjOvMefA9.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+        </style>
+    </head>
+        <html>
+    <head>
+        <title>Class 82</title>
+        <style>
+            #mc{
+                border: 10px solid rgb(156, 163, 136);
+                background-color:rgb(187, 197, 167);
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+
+        <h1>Paint</h1>
+        <canvas height="400" width="600" id="mc"></canvas>
+
+
+        <span>
+            <br><br>
+
+            <input type="color" id="IC">
+            <input id="IR" placeholder="Enter Radius">
+            <input id="IW" placeholder="Enter Width">
+            
+        </span>
+
+    </center>
+    </body>
+    <script>
+
+     canvas = document.getElementById('mc');
+     ctx = canvas.getContext('2d');
+     mouseEvent = "empty"
+
+
+     canvas.addEventListener("mousedown", my_mousedown);
+     function my_mousedown(e)
+     {
+        color = document.getElementById("IC").value;
+        width = document.getElementById("IW").value;
+        radius = document.getElementById("IR").value;
+        mouseEvent = "mouseDown"
+     }
+
+     canvas.addEventListener("mouseup", my_mouseup);
+     function my_mouseup(e)
+     {
+         mouseEvent = "mouseUp"
+     }
+
+     canvas.addEventListener("mouseleave", my_mouseleave);
+     function my_mouseleave(e)
+     {
+         mouseEvent = "mouseLeave"
+     }
+
+     canvas.addEventListener("mousemove", my_mousemove);
+     function my_mousemove(e)
+     {
+         cpx = e.clientX - canvas.offsetLeft;
+         cpy = e.clientY - canvas.offsetTop;
+        
+        if(mouseEvent=="mouseDown") {
+            
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth= width;
+        ctx.arc(cpx, cpy, radius, 0, 2*Math.PI)
+        ctx.moveTo(lpx,lpy);
+        ctx.lineTo(cpx,cpy);
+        ctx.stroke();
+
+        }
+        
+        lpx = cpx;
+        lpy = cpy;
+
+        
+
+        
+     }
+
+
+    </script>
+</html> 
